@@ -1,6 +1,6 @@
-{ "name": "…"
+{ "name": "doxie.render"
 , "version": "0.0.0-work-in-progress"
-, "description": "…"
+, "description": "Render a comment to markdown, HTML, or any other format."
 
 , "dependencies":
   {}
@@ -34,7 +34,7 @@
 
 , "license": "MIT"
 , "keywords":
-  [ "…"
+  [ "doxie-plugin"
   ]
 , "contributors":
   [ "Tomek Wiszniewski <t.wiszniewski@gmail.com>"
@@ -42,6 +42,6 @@
 , "copyright": "© 2015 Studio B12 GmbH (http://studio-b12.de)"
 , "repository":
   { "type": "git"
-  , "url": "git@github.com:studio-b12/….git"
+  , "url": "git@github.com:studio-b12/doxie.render.git"
   }
 }
