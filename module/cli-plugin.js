@@ -1,5 +1,6 @@
 import renderError from './tools/error';
   // TODO: Prefix error with [doxie --render]
+import render from './index';
 
 const {resolve} = require('path');
 
@@ -22,4 +23,6 @@ export default (source = '.doxie.render.js') => {
     `Invalid template. Make sure the file \`${templatePath}\` exports a ` +
     'function.'
   );
+
+  return render(template);
 };
