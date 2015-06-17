@@ -8,8 +8,8 @@ const test = require('tape-catch');
 const noop = require('1-liners/noop');
 const always = require('1-liners/always');
 const map = require('1-liners/map');
-const hasOwnProperty = require('1-liners/hasOwnProperty');
 const curry = require('1-liners/curry');
+const hasOwnProperty = curry(require('1-liners/hasOwnProperty'));
 const property = curry(require('1-liners/property'));
 const drop = curry(require('1-liners/drop'));
 const plus = curry(require('1-liners/plus'));
@@ -49,8 +49,8 @@ test(title('Renders comments’ output'), (is) => {
   );
 
   is.deepEqual(
-    map(hasOwnProperty,
-      checkOutputs(({data}) => (data.dummyProperty ? 'Yeeeah!' : undefined))
+    map(hasOwnProperty('output'),
+      check(({data}) => (data.dummyProperty ? 'Yeeeah!' : undefined)).chunks
     ),
     [false, false, true],
     'handling it well when only some comments produce output'
