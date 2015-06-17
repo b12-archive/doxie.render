@@ -1,1 +1,4 @@
-module.exports = (chunk) => chunk.data.location === '.doxie.filter.js';
+module.exports = ({data}) => (
+  data.index +
+  (data.appendFilename ? ' .doxie.render.js' : '')
+);

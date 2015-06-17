@@ -5,9 +5,11 @@ import cli from '../module/cli-plugin';
 const path = require('path');
 
 const test = require('tape-catch');
-const title = require('1-liners/curry')(require('1-liners/plus'))(
-  'CLI plugin:  '
-);
+const curry = require('1-liners/curry');
+const map = require('1-liners/map');
+const property = curry(require('1-liners/property'));
+
+const title = curry(require('1-liners/plus'))('CLI plugin:  ');
 
 // Override `process.cwd()` for testing.
 const originalCwd = process.cwd;
@@ -22,27 +24,31 @@ test(title('Locates the right files'), (is) => {
     {data: {index: 'three', appendFilename: true}},
   ]);
 
+  const commentsOutput = (...args) => map(property('output'),
+    cli(...args)(mock).chunks
+  );
+
   is.deepEqual(
-    cli()(mock).output,
-    'one two three .doxie.render.js',
+    commentsOutput(),
+    ['one', 'two', 'three .doxie.render.js'],
     'Takes the function from `<cwd>/.doxie.render.js` by default.'
   );
 
   is.deepEqual(
-    cli('myTemplate.js')(mock),
-    'one two three myTemplate.js',
+    commentsOutput('myTemplate.js'),
+    ['one', 'two', 'three myTemplate.js'],
     'Locates `myTemplate.js`.'
   );
 
   is.deepEqual(
-    cli('./myTemplate.js')(mock),
-    'one two three myTemplate.js',
+    commentsOutput('./myTemplate.js'),
+    ['one', 'two', 'three myTemplate.js'],
     'Locates `./myTemplate.js`.'
   );
 
   is.deepEqual(
-    cli('../cwd/myTemplate.js')(mock),
-    'one two three myTemplate.js',
+    commentsOutput('../cwd/myTemplate.js'),
+    ['one', 'two', 'three myTemplate.js'],
     'Locates `../cwd/myTemplate.js`.'
   );
 
