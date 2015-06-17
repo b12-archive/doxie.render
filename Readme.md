@@ -48,10 +48,13 @@ A plugin for *[doxie][]*.
 
 
 
+**Note:** Don’t panic. `doxie --render` is a flexible, low-level plugin. We’re working on higher-level plugins which you can drop into your project without fiddling with configuration.
+
+
+
+
 CLI Usage
 ---------
-
-**Note:** Don’t panic. `doxie --render` is a flexible, low-level plugin. We’re working on higher-level plugins which you can drop into your project without fiddling with configuration.
 
 `doxie --render` is a plugin for the command-line tool *[doxie][]*. Most plugins are designed for *[dox][]* data. Install all three if you haven’t already:
 
