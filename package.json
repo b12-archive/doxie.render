@@ -1,5 +1,5 @@
 { "name": "doxie.render"
-, "version": "0.0.0-work-in-progress"
+, "version": "0.1.0"
 , "description": "Render a comment to markdown, HTML, or any other format."
 
 , "dependencies":
