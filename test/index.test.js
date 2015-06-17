@@ -1,3 +1,5 @@
+/* jshint -W079 */
+
 import dummyData from './test-tools/dummyData';
 
 import render from '../module/index';
