@@ -11,7 +11,7 @@ const map = require('1-liners/map');
 const curry = require('1-liners/curry');
 const hasOwnProperty = curry(require('1-liners/hasOwnProperty'));
 const property = curry(require('1-liners/property'));
-const drop = curry(require('1-liners/drop'));
+const omit = require('101/omit');
 const plus = curry(require('1-liners/plus'));
 
 const title = plus('Programmatic API:  ');
@@ -35,7 +35,7 @@ test(title('Renders comments’ output'), (is) => {
   );
 
   is.deepEqual(
-    map(drop('output'),
+    map(omit('output'),
       check(always('anything')).chunks
     ),
     input.chunks,
