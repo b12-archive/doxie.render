@@ -25,7 +25,7 @@ test(title('Renders comments’ output'), (is) => {
 
   const check = (template) => render(template)(input);
   const checkOutputs = (template) => map(property('output'),
-    check(template).chunks
+    check(template).docs
   );
 
   is.deepEqual(
@@ -36,9 +36,9 @@ test(title('Renders comments’ output'), (is) => {
 
   is.deepEqual(
     map(omit('output'),
-      check(always('anything')).chunks
+      check(always('anything')).docs
     ),
-    input.chunks,
+    input.docs,
     'leaving the rest of the comment intact'
   );
 
@@ -50,7 +50,7 @@ test(title('Renders comments’ output'), (is) => {
 
   is.deepEqual(
     map(hasOwnProperty('output'),
-      check(({data}) => (data.dummyProperty ? 'Yeeeah!' : undefined)).chunks
+      check(({data}) => (data.dummyProperty ? 'Yeeeah!' : undefined)).docs
     ),
     [false, false, true],
     'handling it well when only some comments produce output'

@@ -25,7 +25,7 @@ test(title('Locates the right files'), (is) => {
   ]);
 
   const commentsOutput = (...args) => map(property('output'),
-    cli(...args)(mock).chunks
+    cli(...args)(mock).docs
   );
 
   is.deepEqual(

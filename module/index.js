@@ -8,13 +8,13 @@ export default (templateFunction) => {
     'Wrong value of `templateFunction`. We expected a function.'
   );
 
-  return (data) => assign({}, data, {chunks: map(
-    (chunk) => {
-      const output = templateFunction(chunk);
+  return (data) => assign({}, data, {docs: map(
+    (doc) => {
+      const output = templateFunction(doc);
 
-      if (typeof output === 'undefined') return chunk;
-      return assign({}, chunk, {output: String(output)});
+      if (typeof output === 'undefined') return doc;
+      return assign({}, doc, {output: String(output)});
     },
-    data.chunks
+    data.docs
   )});
 };

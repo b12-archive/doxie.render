@@ -1,1 +1,1 @@
-export default (chunks) => ({chunks, version: 1});
+export default (docs) => ({docs, version: 1});
