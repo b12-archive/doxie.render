@@ -13,7 +13,9 @@ export default (templateFunction) => {
       const output = templateFunction(doc);
 
       if (typeof output === 'undefined') return doc;
-      return assign({}, doc, {output: String(output)});
+      return assign({}, doc, {
+        output: (output != null ? String(output) : output)
+      });
     },
     data.docs
   )});
