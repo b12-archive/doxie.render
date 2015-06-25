@@ -1,7 +1,5 @@
 /* jshint -W079 */
 
-import dummyData from './test-tools/dummyData';
-
 import render from '../module/index';
 
 const test = require('tape-catch');
@@ -13,11 +11,12 @@ const hasOwnProperty = curry(require('1-liners/hasOwnProperty'));
 const property = curry(require('1-liners/property'));
 const omit = require('101/omit');
 const plus = curry(require('1-liners/plus'));
+const dummy = require('doxie-dummy');
 
 const title = plus('Programmatic API:  ');
 
 test(title('Renders comments’ output'), (is) => {
-  const input = dummyData([
+  const input = dummy([
     {data: {dummyProperty: false}},
     {data: {dummyProperty: false}, metadata: 'something'},
     {data: {dummyProperty: true}},

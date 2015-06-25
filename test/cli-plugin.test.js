@@ -1,5 +1,3 @@
-import dummyData from './test-tools/dummyData';
-
 import cli from '../module/cli-plugin';
 
 const path = require('path');
@@ -8,6 +6,7 @@ const test = require('tape-catch');
 const curry = require('1-liners/curry');
 const map = require('1-liners/map');
 const property = curry(require('1-liners/property'));
+const dummyData = require('doxie-dummy/data');
 
 const title = curry(require('1-liners/plus'))('CLI plugin:  ');
 
@@ -19,9 +18,9 @@ test(title('Locates the right files'), (is) => {
   process.cwd = mockCwd;
 
   const mock = dummyData([
-    {data: {index: 'one'}},
-    {data: {index: 'two'}},
-    {data: {index: 'three', appendFilename: true}},
+    {index: 'one'},
+    {index: 'two'},
+    {index: 'three', appendFilename: true},
   ]);
 
   const commentsOutput = (...args) => map(property('output'),
