@@ -61,6 +61,12 @@ test(title('Renders comments’ output'), (is) => {
     'casting non-string return values'
   );
 
+  is.deepEqual(
+    checkOutputs(({data}) => data.dummyProperty ? null : undefined),
+    [undefined, undefined, null],
+    'but not when they are `null` or `undefined`'
+  );
+
   is.end();
 });
 
