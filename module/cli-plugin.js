@@ -11,7 +11,10 @@ export default (source = '.doxie.render.js') => {
   try {
     template = require(templatePath);
   } catch (error) {throw (
-    error.code === 'MODULE_NOT_FOUND' ?
+    (
+      error.code === 'MODULE_NOT_FOUND' &&
+      error.message.indexOf(templatePath) !== -1
+    ) ?
     renderError(
       `No template found. We’ve looked in \`${templatePath}\`.`
         // TODO: Print usage.
