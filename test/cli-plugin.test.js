@@ -64,6 +64,15 @@ test(title('Fails gracefully'), (is) => {
     'Throws a helpful error when given a non-existent file.'
   );
 
+  try {
+    cli('nonExistentImport.js');
+  } catch (error) {
+    is.equal(error.code,
+      'MODULE_NOT_FOUND',
+      'Doesn’t get confused when a template imports a non-existent file.'
+    );
+  }
+
   is.throws(
     () => cli('notAFunction.js'),
     /invalid template/i,
